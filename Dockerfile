@@ -36,6 +36,9 @@ RUN yum install -y python3 python3-devel mysql-devel gcc \
 # install nginx
 RUN yum install -y nginx
 
+ADD nginx.conf /etc/nginx/
+ADD default.conf /etc/nginx/conf.d/
+
 # run php-fpm by default on startup
 CMD [ "/bin/bash", "-c", "/usr/sbin/php-fpm && /usr/sbin/nginx -g 'daemon off;'" ]
 
